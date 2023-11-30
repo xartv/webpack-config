@@ -7,15 +7,27 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
 
   const isDev = mode === "development";
 
+  const cssLoaderWithModules = {
+    loader: "css-loader",
+    options: {
+      modules: {
+        localIdentName: isDev ? "[folder]__[local]" : "[hash:base64:8]",
+      },
+    },
+  };
+
   const cssLoader = {
     test: /\.css$/i,
-    use: [isDev ? "style-loader" : MiniCssExtractPlugin.loader, "css-loader"],
+    use: [
+      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      cssLoaderWithModules,
+    ],
   };
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
       isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-      "css-loader",
+      cssLoaderWithModules,
       "sass-loader",
     ],
   };
