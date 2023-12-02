@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpack_test_config=self.webpackChunkwebpack_test_config||[]).push([[965],{965:(e,c,t)=>{t.r(c),t.d(c,{default:()=>s});var n=t(893);const s=function(){return(0,n.jsx)("h1",{children:"Blog"})}}}]);
