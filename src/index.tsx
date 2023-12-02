@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import { App } from "./components/App";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { About } from "@/pages/About";
-import { Blog } from "./pages/Blog";
+import { Blog } from "@/pages/Blog";
 import { Suspense } from "react";
 
 const root = document.getElementById("root");
