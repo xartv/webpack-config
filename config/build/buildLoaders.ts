@@ -34,7 +34,14 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     // ts-loader work with JSX
     // if use js, need to install babel-loader
     test: /\.tsx?$/,
-    use: "ts-loader",
+    use: [
+      {
+        loader: "ts-loader",
+        options: {
+          transpileOnly: isDev,
+        },
+      },
+    ],
     exclude: /node_modules/,
   };
   const assetLoader = {

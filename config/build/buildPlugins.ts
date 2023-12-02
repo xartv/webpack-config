@@ -4,6 +4,7 @@ import webpack, { Configuration, DefinePlugin } from "webpack";
 import { BuildOptions } from "./types/buildTypes";
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
   const { mode, paths, analyzer, platform } = options;
@@ -23,6 +24,7 @@ export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
   const devPlugins: Configuration["plugins"] = [
     // off if build slow
     new webpack.ProgressPlugin(),
+    new ForkTsCheckerWebpackPlugin(),
   ];
 
   const prodPlugins: Configuration["plugins"] = [

@@ -9,10 +9,7 @@ export const App = () => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => setCount((prev) => prev + 1);
-
-  if (__PLATFORM__ === "desktop") return "THIS_IS_DESKTOP";
-  if (__PLATFORM__ === "mobile") return "THIS_IS_MOBILE";
-
+  
   return (
     <div>
       <Link to="about">About</Link>
