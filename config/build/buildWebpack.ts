@@ -15,7 +15,7 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
     entry: paths.entry,
     output: {
       path: paths.output,
-      filename: "bundle.[contenthash].js",
+      filename: "[name].bundle.[contenthash].js",
       clean: true,
     },
     devtool: isDev && "inline-source-map",

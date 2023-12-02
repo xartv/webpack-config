@@ -2,13 +2,9 @@ import webpack from "webpack";
 import { buildWebpack } from "./config/build/buildWebpack";
 import { BuildMode, BuildPaths } from "./config/build/types/buildTypes";
 import path from "path";
+import "dotenv/config";
 
-export interface EnvVariables {
-  mode: BuildMode;
-  port: number;
-}
-
-export default (env: EnvVariables) => {
+export default () => {
   const paths: BuildPaths = {
     entry: path.resolve(__dirname, "src", "index.tsx"),
     output: path.resolve(__dirname, "build"),
@@ -16,9 +12,10 @@ export default (env: EnvVariables) => {
   };
 
   const config: webpack.Configuration = buildWebpack({
-    port: env.port ?? 3000,
-    mode: env.mode ?? "development",
+    port: Number(process.env.PORT) ?? 3000,
+    mode: (process.env.MODE as BuildMode) ?? "development",
     paths,
+    analyzer: process.env.analyzer,
   });
 
   return config;
