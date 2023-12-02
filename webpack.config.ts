@@ -1,6 +1,11 @@
 import webpack from "webpack";
 import { buildWebpack } from "./config/build/buildWebpack";
-import { BuildMode, BuildPaths } from "./config/build/types/buildTypes";
+import {
+  BuildMode,
+  BuildPaths,
+  BuildPlatform,
+  OnOff,
+} from "./config/build/types/buildTypes";
 import path from "path";
 import "dotenv/config";
 
@@ -16,7 +21,8 @@ export default () => {
     port: Number(process.env.PORT) ?? 3000,
     mode: (process.env.MODE as BuildMode) ?? "development",
     paths,
-    analyzer: process.env.analyzer,
+    analyzer: (process.env.analyzer as OnOff) ?? "off",
+    platform: (process.env.platform as BuildPlatform) ?? "desktop",
   });
 
   return config;
