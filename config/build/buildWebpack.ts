@@ -18,7 +18,7 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
       filename: "[name].bundle.[contenthash].js",
       clean: true,
     },
-    devtool: isDev && "inline-source-map",
+    devtool: isDev ? "eval-cheap-module-source-map" : "source-map",
     devServer: isDev ? buildDevServer(options) : undefined,
     module: {
       rules: buildLoaders(options),
