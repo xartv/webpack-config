@@ -5,6 +5,7 @@ import { BuildOptions } from "./types/buildTypes";
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
   const { mode, paths, analyzer, platform } = options;
@@ -25,6 +26,7 @@ export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
     // off if build slow
     new webpack.ProgressPlugin(),
     new ForkTsCheckerWebpackPlugin(),
+    new ReactRefreshWebpackPlugin(),
   ];
 
   const prodPlugins: Configuration["plugins"] = [

@@ -10,5 +10,6 @@ export function buildDevServer(options: BuildOptions): Configuration {
     open: isDev,
     // work only for devServer, if use nginx need to proxy requests to index.html
     historyApiFallback: true,
+    hot: true,
   };
 }
