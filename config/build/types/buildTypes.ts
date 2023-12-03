@@ -5,6 +5,7 @@ export type OnOff = "on" | "off";
 export interface BuildPaths {
   entry: string;
   html: string;
+  public: string;
   output: string;
   src: string;
 }
