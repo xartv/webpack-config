@@ -2,6 +2,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { ModuleOptions } from "webpack";
 import { BuildOptions } from "./types/buildTypes";
 import ReactRefreshTypeScript from "react-refresh-typescript";
+import { buildBabelLoader } from "./babel/buildBabelLoader";
 
 export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   const { mode } = options;
@@ -16,6 +17,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
       },
     },
   };
+
   const cssLoader = {
     test: /\.css$/i,
     use: [
@@ -23,6 +25,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
       cssLoaderWithModules,
     ],
   };
+
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
@@ -31,6 +34,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
       "sass-loader",
     ],
   };
+
   const tsLoader = {
     // ts-loader work with JSX
     // if use js, need to install babel-loader
@@ -48,10 +52,14 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     ],
     exclude: /node_modules/,
   };
+
+  const babelLoader = buildBabelLoader(options);
+
   const assetLoader = {
     test: /\.(png|jpg|jpeg|gif)$/i,
     type: "asset/resource",
   };
+
   const svgrLoader = {
     test: /\.svg$/i,
     issuer: /\.[jt]sx?$/,

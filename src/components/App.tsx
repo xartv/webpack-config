@@ -9,14 +9,14 @@ export const App = () => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => setCount((prev) => prev + 1);
-  
+
   return (
-    <div>
+    <div data-testid="App.DataTestId">
       <Link to="about">About</Link>
       <br />
       <Link to="blog">Blog</Link>
 
-      <div>Platform - {__PLATFORM__}</div>
+      <div data-testid="Platform.DataTestId">Platform - {__PLATFORM__}</div>
       <img src={kittyPng} />
       <img src={kittyJpg} />
       <TelegramSvg color="blue" width={50} height={50} />
